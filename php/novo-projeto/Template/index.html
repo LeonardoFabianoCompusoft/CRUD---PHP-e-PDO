@@ -1,19 +1,81 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Cadastro CRUD+PDO</title>
-        </head>
-        <body>
-            <h1>Cadastrar</h1>
-            <form name="cad-user"  method="post">
-                <label>Nome: </label>
-                <input type="text" name="nome" id="nome" placeholder="Nome completo"><br><br>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro CRUD+PDO</title>
+    <style>
+        /* Estilo para o fundo da página */
+        body {
+            background-color: #f0f0f0; /* Cor cinza para o fundo da página */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center; /* Centraliza o formulário na tela */
+            align-items: center; /* Centraliza o formulário na tela verticalmente */
+            height: 100vh; /* Ocupa toda a altura da tela */
+            margin: 0;
+        }
 
-                <label>E-mail: </label>
-                <input type="email" name="email" id="email" placeholder="E-mail compativel">
+        /* Estilo do container do formulário */
+        .form-container {
+            background-color: white; /* Fundo branco */
+            padding: 30px; /* Espaçamento interno */
+            border-radius: 8px; /* Bordas arredondadas */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+            width: 300px; /* Largura fixa */
+            text-align: center; /* Alinhamento do texto no centro */
+        }
 
-                <input type="submit" value="Cadastrar" name="CadastroUsuario">
-            </form>
-        </body>
-    </html>
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%; /* Preenche toda a largura do container */
+            padding: 10px;
+            margin-bottom: 15px; /* Espaçamento entre os campos */
+            border: 1px solid #ccc; /* Cor da borda */
+            border-radius: 4px; /* Bordas arredondadas nos campos */
+            box-sizing: border-box; /* Para garantir que o padding não ultrapasse a largura do campo */
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50; /* Cor de fundo verde */
+            color: white; /* Cor do texto */
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px; /* Bordas arredondadas */
+            width: 100%; /* Largura total do botão */
+            transition: background-color 0.3s ease; /* Efeito de transição */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Cor do botão ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Cadastrar</h1>
+        <form name="cad-user" method="post">
+            <label for="nome">Nome: </label>
+            <input type="text" name="nome" id="nome" placeholder="Nome completo" required><br>
+
+            <label for="email">E-mail: </label>
+            <input type="email" name="email" id="email" placeholder="E-mail compatível" required>
+
+            <input type="submit" value="Cadastrar" name="CadastroUsuario">
+        </form>
+    </div>
+
+</body>
+</html>
