@@ -1,6 +1,8 @@
 <?php
-    require_once "Connection/connection.php";
-
-    $modelo= file_get_contents("APP/Template/index.html");
+    require_once "Connection/connection.php";  // Conexão com o banco de dados
+    require_once "PHP/register.php";           // Função de cadastro de usuários
     
-    echo $modelo;
+    $modelo = file_get_contents("Template/index.html"); // Carrega o HTML
+    
+    echo $modelo;  // Exibe o conteúdo da página
+?>
