@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-novo
+    ports:
+      - "80:80"
+    volumes:
+      - ./php/:/php
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - php
+    restart: always
+
+  php:
+    container_name: php-novo
+    build: ./php/
+    volumes:
+      - ./php:/php
+    environment:
+      XDEBUG_MODE: debug
+      XDEBUG_CONFIG: client_host=host.docker.internal client_port=9003
+    expose:
+      - 9000
+    depends_on:
+      - mysql
+    restart: always
+
+  mysql:
+    image: mysql:5.7.40
+    container_name: mysql-novo
+    volumes:
+      - ./mysql/container:/var/lib/mysql
+      - ./mysql:/database
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_TYPE: "mysql_native_password"
+      MYSQL_HOST: "mysql-novo"
+      MYSQL_ROOT_PASSWORD: "teste@123"
+    command: --default-authentication-plugin=mysql_native_password --group_concat_max_len=4294967295 --sql_mode="STRICT_TRANS_TABLES" --default_time_zone=-03:00 --event_scheduler="on" --max_allowed_packet=1073741824 --max_connections="100" --long_query_time="2" --table_definition_cache="700" --table_open_cache="1000" --general_log=OFF
+    restart: always
+
